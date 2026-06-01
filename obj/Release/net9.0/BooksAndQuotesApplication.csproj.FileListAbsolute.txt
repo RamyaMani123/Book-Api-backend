@@ -165,3 +165,4 @@ C:\Users\Ramya Sanjith\source\repos\BooksAndQuotesApplication\BooksAndQuotesAppl
 C:\Users\Ramya Sanjith\source\repos\BooksAndQuotesApplication\BooksAndQuotesApplication\obj\Release\net9.0\BooksAndQuotesApplication.pdb
 C:\Users\Ramya Sanjith\source\repos\BooksAndQuotesApplication\BooksAndQuotesApplication\obj\Release\net9.0\BooksAndQuotesApplication.genruntimeconfig.cache
 C:\Users\Ramya Sanjith\source\repos\BooksAndQuotesApplication\BooksAndQuotesApplication\obj\Release\net9.0\ref\BooksAndQuotesApplication.dll
+C:\Users\Ramya Sanjith\source\repos\BooksAndQuotesApplication\BooksAndQuotesApplication\obj\Release\net9.0\BooksAndQuotesApplication.sourcelink.json
