@@ -166,3 +166,8 @@ C:\Users\Ramya Sanjith\source\repos\BooksAndQuotesApplication\BooksAndQuotesAppl
 C:\Users\Ramya Sanjith\source\repos\BooksAndQuotesApplication\BooksAndQuotesApplication\obj\Release\net9.0\BooksAndQuotesApplication.genruntimeconfig.cache
 C:\Users\Ramya Sanjith\source\repos\BooksAndQuotesApplication\BooksAndQuotesApplication\obj\Release\net9.0\ref\BooksAndQuotesApplication.dll
 C:\Users\Ramya Sanjith\source\repos\BooksAndQuotesApplication\BooksAndQuotesApplication\obj\Release\net9.0\BooksAndQuotesApplication.sourcelink.json
+C:\Users\Ramya Sanjith\source\repos\BooksAndQuotesApplication\BooksAndQuotesApplication\bin\Release\net9.0\publish\web.config
+C:\Users\Ramya Sanjith\source\repos\BooksAndQuotesApplication\BooksAndQuotesApplication\bin\Release\net9.0\publish\appsettings.json
+C:\Users\Ramya Sanjith\source\repos\BooksAndQuotesApplication\BooksAndQuotesApplication\bin\Release\net9.0\publish\BooksAndQuotesApplication.deps.json
+C:\Users\Ramya Sanjith\source\repos\BooksAndQuotesApplication\BooksAndQuotesApplication\bin\Release\net9.0\publish\BooksAndQuotesApplication.runtimeconfig.json
+C:\Users\Ramya Sanjith\source\repos\BooksAndQuotesApplication\BooksAndQuotesApplication\bin\Release\net9.0\publish\BooksAndQuotesApplication.staticwebassets.endpoints.json

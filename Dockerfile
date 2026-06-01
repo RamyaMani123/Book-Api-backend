@@ -17,4 +17,4 @@ ENV ASPNETCORE_URLS=http://+:8080
 EXPOSE 8080
 
 # IMPORTANT: replace DLL name correctly
-ENTRYPOINT ["dotnet", "Book-Api-backend.dll"]
+ENTRYPOINT ["dotnet", "BooksAndQuotesApplication.dll"]
