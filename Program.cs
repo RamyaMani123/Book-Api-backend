@@ -5,10 +5,9 @@ using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using System.Text;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
-// ================= CONTROLLERS ONLY (API PROJECT) =================
+// ================= CONTROLLERS =================
 builder.Services.AddControllers();
 
 // ================= JWT AUTH =================
@@ -28,6 +27,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             IssuerSigningKey = new SymmetricSecurityKey(
                 Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!)
             ),
+
             NameClaimType = ClaimTypes.NameIdentifier
         };
     });
@@ -41,24 +41,41 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     )
 );
 
-// ================= CORS (Angular) =================
+// ================= CORS =================
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAngularApp",
-        policy =>
-        {
-            policy.WithOrigins("http://localhost:4200",
-                "https://6a1e013faebbbff4f0f01c23--clinquant-gumption-027a57.netlify.app/")
-                  .AllowAnyHeader()
-                  .AllowAnyMethod();
-        });
+    options.AddPolicy("AllowAngularApp", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
 });
 
 // ================= SWAGGER =================
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// ================= BUILD APP =================
 var app = builder.Build();
+
+// ================= DATABASE TEST =================
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+
+    try
+    {
+        var canConnect = db.Database.CanConnect();
+
+        Console.WriteLine($"Database connection successful: {canConnect}");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Database connection failed:");
+        Console.WriteLine(ex.ToString());
+    }
+}
 
 // ================= PIPELINE =================
 if (app.Environment.IsDevelopment())
@@ -75,5 +92,21 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+// ================= OPTIONAL DB TEST ENDPOINT =================
+app.MapGet("/db-test", (AppDbContext db) =>
+{
+    try
+    {
+        return Results.Ok(new
+        {
+            CanConnect = db.Database.CanConnect()
+        });
+    }
+    catch (Exception ex)
+    {
+        return Results.Problem(ex.ToString());
+    }
+});
 
 app.Run();

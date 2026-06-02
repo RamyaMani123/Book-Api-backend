@@ -5,7 +5,7 @@
     public string Title { get; set; } = string.Empty;
 
     public string Author { get; set; } = string.Empty;
-    public DateTime PublicationDate { get; set; } = DateTime.Now;
+    public DateTime PublicationDate { get; set; } = DateTime.UtcNow;
     
 
 

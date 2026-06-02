@@ -17,14 +17,26 @@ public class BooksController : ControllerBase
     {
         return Ok(_context.Books.ToList());
     }
-
     [HttpPost]
     public IActionResult AddBook([FromBody] Book book)
     {
-        _context.Books.Add(book);
-        _context.SaveChanges();
+        try
+        {
+            book.PublicationDate = DateTime.SpecifyKind(book.PublicationDate, DateTimeKind.Utc);
+            _context.Books.Add(book);
+            _context.SaveChanges();
 
-        return Ok(book);
+            return Ok(book);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new
+            {
+                Message = ex.Message,
+                InnerException = ex.InnerException?.Message,
+                FullError = ex.ToString()
+            });
+        }
     }
 
     [HttpPut("{id}")]

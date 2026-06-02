@@ -5,6 +5,11 @@ namespace BooksAndQuotesApplication.Data;
 
 public class AppDbContext : DbContext
 {
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Book>().ToTable("Books");
+        modelBuilder.Entity<Quote>().ToTable("Quotes");
+    }
     public AppDbContext(DbContextOptions<AppDbContext> options)
         : base(options)
     {

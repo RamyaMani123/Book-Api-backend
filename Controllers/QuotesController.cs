@@ -18,30 +18,60 @@ public class QuotesController : ControllerBase
         return Ok(_context.Quotes.ToList());
     }
 
-    [HttpGet("{id}")]
-    public IActionResult GetQuote(int id)
-    {
-        var quote = _context.Quotes.Find(id);
+ 
 
-        if (quote == null)
-            return NotFound();
+    [HttpPost] 
 
-        return Ok(quote);
-    }
-
-    [HttpPost]
     public IActionResult AddQuote([FromBody] Quote quote)
+
     {
+
         try
+
         {
+
+            if (quote == null)
+
+            {
+
+                return BadRequest("Quote is null");
+
+            }
+
+            if (string.IsNullOrWhiteSpace(quote.Text))
+
+            {
+
+                return BadRequest("Text is empty");
+
+            }
+
             _context.Quotes.Add(quote);
+
             _context.SaveChanges();
+
             return Ok(quote);
+
         }
+
         catch (Exception ex)
+
         {
-            return StatusCode(500, ex.ToString());
+
+            return StatusCode(500, new
+
+            {
+
+                Message = ex.Message,
+
+                Inner = ex.InnerException?.Message,
+
+                Full = ex.ToString()
+
+            });
+
         }
+
     }
 
     [HttpPut("{id}")]
