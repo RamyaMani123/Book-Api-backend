@@ -5,6 +5,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using System.Text;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // ================= CONTROLLERS ONLY (API PROJECT) =================
@@ -35,7 +36,7 @@ builder.Services.AddAuthorization();
 
 // ================= EF CORE =================
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(
+    options.UseNpgsql(
         builder.Configuration.GetConnectionString("DefaultConnection")
     )
 );
@@ -46,7 +47,8 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowAngularApp",
         policy =>
         {
-            policy.WithOrigins("http://localhost:4200")
+            policy.WithOrigins("http://localhost:4200",
+                "https://6a1e013faebbbff4f0f01c23--clinquant-gumption-027a57.netlify.app/")
                   .AllowAnyHeader()
                   .AllowAnyMethod();
         });
