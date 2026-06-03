@@ -6,9 +6,9 @@ using System.Text;
 using BooksAndQuotesApplication.Dtos;
 using BooksAndQuotesApplication.Data;
 using BooksAndQuotesApplication.Models;
-using System.Linq;
 
-namespace BooksAndQuotesApplication.Controllers;
+
+//namespace BooksAndQuotesApplication.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -25,7 +25,7 @@ public class AuthController : ControllerBase
 
     // ================= REGISTER =================
     [HttpPost("register")]
-    public IActionResult Register(UserDto dto)
+    public IActionResult Register([FromBody] UserDto dto)
     {
         if (dto == null)
             return BadRequest("Invalid data");

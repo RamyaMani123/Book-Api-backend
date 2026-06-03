@@ -1,6 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-[Table("Quotes")]
+﻿//using System.ComponentModel.DataAnnotations.Schema;
+//[Table("Quotes")]
 public class Quote
 {
     public int Id { get; set; }

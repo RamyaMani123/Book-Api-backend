@@ -59,23 +59,7 @@ builder.Services.AddSwaggerGen();
 // ================= BUILD APP =================
 var app = builder.Build();
 
-// ================= DATABASE TEST =================
-using (var scope = app.Services.CreateScope())
-{
-    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
 
-    try
-    {
-        var canConnect = db.Database.CanConnect();
-
-        Console.WriteLine($"Database connection successful: {canConnect}");
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine($"Database connection failed:");
-        Console.WriteLine(ex.ToString());
-    }
-}
 
 // ================= PIPELINE =================
 if (app.Environment.IsDevelopment())
